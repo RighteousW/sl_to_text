@@ -1,5 +1,5 @@
-#include "inference/video-capture.h"
+#include "gui/window.h"
 
 int main() {
-    return run_camera_preview();
+    return run_window();
 }
