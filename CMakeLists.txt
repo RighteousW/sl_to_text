@@ -5,19 +5,20 @@ set(CMAKE_CXX_STANDARD 23)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
 
-find_package(glfw3 REQUIRED)
-find_package(OpenGL REQUIRED)
+find_package(OpenCV REQUIRED COMPONENTS core videoio highgui)
 
 add_executable(sl_to_text
     src/main.cpp
-    src/gui/window.cpp
+    src/inference/video-capture.cpp
 )
 
 target_include_directories(sl_to_text PRIVATE
     src
+    ${OpenCV_INCLUDE_DIRS}
 )
 
 target_link_libraries(sl_to_text PRIVATE
-    glfw
-    OpenGL::GL
+    opencv_core
+    opencv_videoio
+    opencv_highgui
 )
